@@ -39,3 +39,7 @@ Para executar o caixa eletrônico, execute o script principal:
 
 ```bash
 python caixa_eletronico.py
+
+Requisitos
+Python 3.x
+Biblioteca tkinter
