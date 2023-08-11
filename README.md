@@ -1,95 +1,45 @@
-# Documentação Caixa-Eletronico
- Simulador de caixa eletrônico simples com uso de Tkinter para interface. Foco em POO aplicada à Python.
+# Caixa Eletrônico com Interface Gráfica
 
-"""
-Módulo de Caixa Eletrônico com Interface Gráfica
+Este é um projeto de caixa eletrônico simulado com uma interface gráfica desenvolvida usando a biblioteca tkinter em Python.
 
-Este módulo define classes que representam um caixa eletrônico e uma interface gráfica para interagir com o caixa eletrônico.
-Utiliza a biblioteca tkinter para criar a interface gráfica e gerenciar as interações com o usuário.
+## Classes
 
-Classes:
-    CaixaEletronico: Representa um caixa eletrônico com operações de consulta de saldo e saque.
-    InterfaceCaixa: Cria uma interface gráfica para interagir com o caixa eletrônico.
-"""
+### CaixaEletronico
 
-import tkinter as tk
-from tkinter import messagebox
+Representa um caixa eletrônico com operações de consulta de saldo e saque.
 
-class CaixaEletronico:
-"""
-    Representa um caixa eletrônico com operações de consulta de saldo e saque.
+#### Atributos
 
-    Atributos:
-        saldo (float): O saldo disponível no caixa eletrônico.
+- `saldo` (float): O saldo disponível no caixa eletrônico.
 
-    Métodos:
-        consultar_saldo(): Retorna o saldo atual do caixa eletrônico.
-        sacar(valor): Tenta efetuar um saque no valor especificado.
-    """
-def __init__(self):
-        """Inicializa o caixa eletrônico com um saldo inicial de 1000."""
-        self.saldo = 1000
+#### Métodos
 
-def consultar_saldo(self):
-        """Retorna o saldo atual do caixa eletrônico."""
-        return self.saldo
+- `__init__()`: Inicializa o caixa eletrônico com um saldo inicial de R$ 1000.
+- `consultar_saldo()`: Retorna o saldo atual do caixa eletrônico.
+- `sacar(valor)`: Tenta efetuar um saque no valor especificado.
 
-def sacar(self, valor):
-        """
-        Tenta efetuar um saque no valor especificado.
+### InterfaceCaixa
 
-        Args:
-            valor (float): O valor a ser sacado.
+Cria uma interface gráfica para interagir com o caixa eletrônico.
 
-        Returns:
-            bool: True se o saque foi bem-sucedido, False caso contrário.
-        """
-if valor > 0 and valor <= self.saldo:
-            self.saldo -= valor
-            return True
-        else:
-            return False
-class InterfaceCaixa:
-    """
-    Cria uma interface gráfica para interagir com o caixa eletrônico.
+#### Atributos
 
-    Atributos:
-        root (Tk): A janela principal da interface.
-        caixa (CaixaEletronico): Uma instância da classe CaixaEletronico.
+- `root` (Tk): A janela principal da interface.
+- `caixa` (CaixaEletronico): Uma instância da classe CaixaEletronico.
 
-    Métodos:
-        consultar_saldo(): Atualiza a interface com o saldo atual.
-        efetuar_saque(): Tenta efetuar um saque com o valor fornecido pelo usuário.
-    """
-def __init__(self, root):
-        """
-        Inicializa a interface e cria os elementos gráficos.
+#### Métodos
 
-        Args:
-            root (Tk): A janela principal da interface.
-        """
-        self.root = root
-        self.root.title("Caixa Eletrônico")
+- `__init__(root)`: Inicializa a interface e cria os elementos gráficos.
+- `consultar_saldo()`: Atualiza a interface com o saldo atual do caixa eletrônico.
+- `efetuar_saque()`: Tenta efetuar um saque com o valor fornecido pelo usuário.
 
-        self.caixa = CaixaEletronico()
+## Uso
 
-# Criação dos widgets da interface gráfica e suas configurações
+Para executar o caixa eletrônico, execute o script principal:
 
-def consultar_saldo(self):
-        """Atualiza a interface com o saldo atual do caixa eletrônico."""
-        saldo_atual = self.caixa.consultar_saldo()
-        self.saldo_var.set(f"R$ {saldo_atual:.2f}")
+```bash
+python caixa_eletronico.py
 
-def efetuar_saque(self):
-        """Tenta efetuar um saque e exibe mensagens de sucesso ou erro na interface."""
-        valor = int(self.valor_saque.get())
-        if self.caixa.sacar(valor):
-            messagebox.showinfo("Sucesso", f"Saque de R${valor} realizado com sucesso.")
-            self.consultar_saldo()
-        else:
-            messagebox.showerror("Erro", "Saque não autorizado. Verifique o valor ou saldo disponível.")
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    interface = InterfaceCaixa(root)
-    root.mainloop()
+Requisitos
+Python 3.x
+Biblioteca tkinter
