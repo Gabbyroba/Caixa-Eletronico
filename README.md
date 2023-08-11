@@ -10,14 +10,13 @@ Utiliza a biblioteca tkinter para criar a interface gráfica e gerenciar as inte
 Classes:
     CaixaEletronico: Representa um caixa eletrônico com operações de consulta de saldo e saque.
     InterfaceCaixa: Cria uma interface gráfica para interagir com o caixa eletrônico.
-
 """
 
 import tkinter as tk
 from tkinter import messagebox
 
 class CaixaEletronico:
-    """
+"""
     Representa um caixa eletrônico com operações de consulta de saldo e saque.
 
     Atributos:
@@ -27,16 +26,15 @@ class CaixaEletronico:
         consultar_saldo(): Retorna o saldo atual do caixa eletrônico.
         sacar(valor): Tenta efetuar um saque no valor especificado.
     """
-
-    def __init__(self):
+def __init__(self):
         """Inicializa o caixa eletrônico com um saldo inicial de 1000."""
         self.saldo = 1000
 
-    def consultar_saldo(self):
+def consultar_saldo(self):
         """Retorna o saldo atual do caixa eletrônico."""
         return self.saldo
 
-    def sacar(self, valor):
+def sacar(self, valor):
         """
         Tenta efetuar um saque no valor especificado.
 
@@ -46,12 +44,11 @@ class CaixaEletronico:
         Returns:
             bool: True se o saque foi bem-sucedido, False caso contrário.
         """
-        if valor > 0 and valor <= self.saldo:
+if valor > 0 and valor <= self.saldo:
             self.saldo -= valor
             return True
         else:
             return False
-
 class InterfaceCaixa:
     """
     Cria uma interface gráfica para interagir com o caixa eletrônico.
@@ -64,8 +61,7 @@ class InterfaceCaixa:
         consultar_saldo(): Atualiza a interface com o saldo atual.
         efetuar_saque(): Tenta efetuar um saque com o valor fornecido pelo usuário.
     """
-
-    def __init__(self, root):
+def __init__(self, root):
         """
         Inicializa a interface e cria os elementos gráficos.
 
@@ -77,14 +73,14 @@ class InterfaceCaixa:
 
         self.caixa = CaixaEletronico()
 
-        # Criação dos widgets da interface gráfica e suas configurações
+# Criação dos widgets da interface gráfica e suas configurações
 
-    def consultar_saldo(self):
+def consultar_saldo(self):
         """Atualiza a interface com o saldo atual do caixa eletrônico."""
         saldo_atual = self.caixa.consultar_saldo()
         self.saldo_var.set(f"R$ {saldo_atual:.2f}")
 
-    def efetuar_saque(self):
+def efetuar_saque(self):
         """Tenta efetuar um saque e exibe mensagens de sucesso ou erro na interface."""
         valor = int(self.valor_saque.get())
         if self.caixa.sacar(valor):
@@ -97,4 +93,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     interface = InterfaceCaixa(root)
     root.mainloop()
-
